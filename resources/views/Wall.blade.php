@@ -7,119 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('css/Wall.css') }}">
   <title>NU Laguna FW</title>
-  
-  <style>
-    /* Additional styles for the admin button */
-    .header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    
-    .header-title {
-      font-size: 1.5em;
-      font-weight: bold;
-      color: #fbbf24;
-      margin: 0;
-    }
-    
-    .admin-btn {
-      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-      color: #1e3a8a;
-      border: none;
-      padding: 10px 20px;
-      font-size: 0.9em;
-      font-weight: 600;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .admin-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-      transition: left 0.5s;
-    }
-    
-    .admin-btn:hover::before {
-      left: 100%;
-    }
-    
-    .admin-btn:hover {
-      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
-      text-decoration: none;
-    }
-    
-    .admin-btn:active {
-      transform: translateY(0);
-    }
-    
-    .admin-icon {
-      width: 16px;
-      height: 16px;
-      fill: currentColor;
-    }
-    
-    /* Mobile responsive adjustments */
-    @media (max-width: 768px) {
-      .header-container {
-        padding: 0 15px;
-      }
-      
-      .header-title {
-        font-size: 1.2em;
-      }
-      
-      .admin-btn {
-        padding: 8px 16px;
-        font-size: 0.8em;
-        border-radius: 20px;
-      }
-      
-      .admin-btn span {
-        display: none;
-      }
-      
-      .admin-icon {
-        width: 18px;
-        height: 18px;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .header-title {
-        font-size: 1em;
-      }
-      
-      .admin-btn {
-        padding: 6px 12px;
-      }
-    }
-  </style>
 </head>
 
 <body>
@@ -135,9 +24,9 @@
     </div>
   </header>
 
-  <div class="container">
+  <div class="intro-panel">
     <a href="{{ route('post') }}" class="button-link" id="main-post-btn">
-      <button type="button">Go to Form-Post</button>
+      <button type="button">Share a Post</button>
     </a>
     <p class="note">You can post anything freely. No login needed.</p>
   </div>
@@ -145,86 +34,194 @@
   <!-- Floating Side Button -->
   <a href="{{ route('post') }}" id="side-post-btn"
     style="display:none; position:fixed; right:30px; bottom:30px; z-index:9999;">
-    <button type="button" class="btn btn-primary rounded-circle shadow"
-      style="width:60px; height:60px; font-size:24px;">
+    <button type="button" class="fab-btn">
       <span class="visually-hidden">Go to Form-Post</span>
       <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-pencil-square"
         viewBox="0 0 16 16">
-        <path
-          d="M15.502 1.94a.5.5 0 0 1 0 .706l-1 1a.5.5 0 0 1-.708 0l-1-1a.5.5 0 0 1 .708-.708l.646.647.646-.647a.5.5 0 0 1 .708 0z" />
-        <path
-          d="M13.5 3.207L6 10.707V13h2.293l7.5-7.5-2.293-2.293zm1.5 1.5L14.293 5.5 10.5 9.293V10.5h1.207l3.793-3.793z" />
-        <path fill-rule="evenodd"
-          d="M1 13.5V2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v1h-1V2H2v11h11v-1h1v1a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1z" />
+        <path d="M15.502 1.94a.5.5 0 0 1 0 .706l-1 1a.5.5 0 0 1-.708 0l-1-1a.5.5 0 0 1 .708-.708l.646.647.646-.647a.5.5 0 0 1 .708 0z" />
+        <path d="M13.5 3.207L6 10.707V13h2.293l7.5-7.5-2.293-2.293zm1.5 1.5L14.293 5.5 10.5 9.293V10.5h1.207l3.793-3.793z" />
+        <path fill-rule="evenodd" d="M1 13.5V2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v1h-1V2H2v11h11v-1h1v1a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1z" />
       </svg>
     </button>
   </a>
 
+  <main class="wall-feed">
+    @if ($contents->isEmpty())
+      <div class="empty-state">No posts yet. Be the first to share something.</div>
+    @else
+      @php $hasAccepted = false; @endphp
+      <div class="posts-grid">
+        @foreach ($contents as $content)
+          @if ($content->Status == 'accepted')
+            @php
+              $hasAccepted = true;
+              $mediaArray = is_array($content->media)
+                ? $content->media
+                : (json_decode($content->media, true) ?? []);
+
+              $mediaItems = [];
+              foreach ($mediaArray as $m) {
+                  $ext = strtolower(pathinfo($m, PATHINFO_EXTENSION));
+                  $type = $ext === 'mp4' ? 'video' : 'image';
+                  $rel = 'storage/' . $m;
+                  $url = file_exists(public_path($rel)) ? asset($rel) : asset('images/placeholder.png');
+                  $mediaItems[] = ['url' => $url, 'type' => $type];
+              }
+              $cover = $mediaItems[0] ?? null;
+            @endphp
+
+            <article class="post-card"
+              data-name="{{ $content->name ?? 'Anonymous' }}"
+              data-title="{{ $content->title ?? '' }}"
+              data-body="{{ $content->body }}"
+              data-media="{{ json_encode($mediaItems) }}"
+              tabindex="0" role="button" aria-label="Open post">
+
+              @if ($cover)
+                <div class="post-card__media">
+                  @if ($cover['type'] === 'video')
+                    <video src="{{ $cover['url'] }}" muted playsinline preload="metadata"></video>
+                    <span class="media-badge">▶ Video</span>
+                  @else
+                    <img src="{{ $cover['url'] }}" alt="Post media" loading="lazy">
+                  @endif
+                  @if (count($mediaItems) > 1)
+                    <span class="media-count">+{{ count($mediaItems) - 1 }}</span>
+                  @endif
+                  <span class="post-card__overlay">View post</span>
+                </div>
+              @else
+                <div class="post-card__media post-card__media--text">
+                  <p>{{ \Illuminate\Support\Str::limit($content->body, 120) }}</p>
+                  <span class="post-card__overlay">View post</span>
+                </div>
+              @endif
+
+              <div class="post-card__body">
+                @if (!empty($content->title))
+                  <h3 class="post-card__title">{{ $content->title }}</h3>
+                @endif
+                <p class="post-card__excerpt">{{ \Illuminate\Support\Str::limit($content->body, 90) }}</p>
+                <div class="post-card__author">
+                  <span class="avatar">{{ strtoupper(substr($content->name ?? 'A', 0, 1)) }}</span>
+                  <span>By {{ $content->name ?? 'Anonymous' }}</span>
+                </div>
+              </div>
+            </article>
+          @endif
+        @endforeach
+      </div>
+
+      @if (!$hasAccepted)
+        <div class="empty-state">No posts yet. Be the first to share something.</div>
+      @endif
+
+      @if ($nullStatusCount > 0)
+        <div class="review-banner">Some posts are being reviewed.</div>
+      @endif
+    @endif
+  </main>
+
+  <!-- Post Modal -->
+  <div class="post-modal" id="postModal" aria-hidden="true">
+    <div class="post-modal__backdrop" data-close></div>
+    <div class="post-modal__dialog" role="dialog" aria-modal="true">
+      <button class="post-modal__close" data-close aria-label="Close">&times;</button>
+      <div class="post-modal__media" id="modalMedia"></div>
+      <div class="post-modal__content">
+        <div class="post-modal__author">
+          <span class="avatar" id="modalAvatar">A</span>
+          <span id="modalName">Anonymous</span>
+        </div>
+        <h2 class="post-modal__title" id="modalTitle"></h2>
+        <p class="post-modal__body" id="modalBody"></p>
+      </div>
+    </div>
+  </div>
+
   <script>
     document.addEventListener('DOMContentLoaded', function () {
+      // Floating button visibility
       const mainBtn = document.getElementById('main-post-btn');
       const sideBtn = document.getElementById('side-post-btn');
-
       function checkButtonVisibility() {
+        if (!mainBtn || !sideBtn) return;
         const rect = mainBtn.getBoundingClientRect();
-        // If the bottom of the main button is above the viewport, show side button
-        if (rect.bottom < 0 || rect.top > window.innerHeight) {
-          sideBtn.style.display = 'block';
-        } else {
-          sideBtn.style.display = 'none';
-        }
+        sideBtn.style.display = (rect.bottom < 0 || rect.top > window.innerHeight) ? 'block' : 'none';
       }
-
       window.addEventListener('scroll', checkButtonVisibility);
       window.addEventListener('resize', checkButtonVisibility);
       checkButtonVisibility();
+
+      // Modal logic
+      const modal = document.getElementById('postModal');
+      const modalMedia = document.getElementById('modalMedia');
+      const modalName = document.getElementById('modalName');
+      const modalAvatar = document.getElementById('modalAvatar');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalBody = document.getElementById('modalBody');
+
+      function openModal(card) {
+        const name = card.dataset.name || 'Anonymous';
+        const title = card.dataset.title || '';
+        const body = card.dataset.body || '';
+        let media = [];
+        try { media = JSON.parse(card.dataset.media || '[]'); } catch (e) { media = []; }
+
+        modalName.textContent = name;
+        modalAvatar.textContent = (name.trim()[0] || 'A').toUpperCase();
+        modalTitle.textContent = title;
+        modalTitle.style.display = title ? 'block' : 'none';
+        modalBody.textContent = body;
+
+        modalMedia.innerHTML = '';
+        if (media.length === 0) {
+          modalMedia.style.display = 'none';
+        } else {
+          modalMedia.style.display = 'flex';
+          media.forEach(function (m) {
+            if (m.type === 'video') {
+              const v = document.createElement('video');
+              v.src = m.url;
+              v.controls = true;
+              v.playsInline = true;
+              modalMedia.appendChild(v);
+            } else {
+              const img = document.createElement('img');
+              img.src = m.url;
+              img.alt = 'Post media';
+              modalMedia.appendChild(img);
+            }
+          });
+        }
+
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        modalMedia.innerHTML = '';
+      }
+
+      document.querySelectorAll('.post-card').forEach(function (card) {
+        card.addEventListener('click', function () { openModal(card); });
+        card.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(card); }
+        });
+      });
+
+      modal.querySelectorAll('[data-close]').forEach(function (el) {
+        el.addEventListener('click', closeModal);
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+      });
     });
   </script>
-
-  <div class="container mt-4">
-    @if ($contents->isEmpty())
-      <div class="alert alert-warning text-center">NO POST</div>
-    @else
-      <div class="row">
-        @php $hasAccepted = false; @endphp
-        @foreach ($contents as $content)
-          @if ($content->Status == 'accepted')
-            <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                  <h5 class="card-title">By {{ $content->name ?? 'Anonymous' }}</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">{{ $content->title ?? '' }}</h6>
-                  <p class="card-text">{{ $content->body }}</p>
-                </div>
-                @php
-                  $mediaArray = is_array($content->media)
-                    ? $content->media
-                    : (json_decode($content->media, true) ?? []);
-                @endphp
-                @if (!empty($mediaArray))
-                  <div class="card-footer bg-white">
-                    <div class="d-flex flex-wrap gap-2 justify-content-start">
-                      @foreach ($mediaArray as $media)
-                        @php $mediaPath = 'storage/' . $media; @endphp
-                        @if (file_exists(public_path($mediaPath)))
-                          <img src="{{ asset($mediaPath) }}" class="img-thumbnail media-thumb" alt="Media">
-                        @else
-                          <img src="{{ asset('images/placeholder.png') }}" class="img-thumbnail media-thumb" alt="No Image">
-                        @endif
-                      @endforeach
-                    </div>
-                  </div>
-                @endif
-              </div>
-            </div>
-          @endif
-        @endforeach
-          @if ($nullStatusCount > 0) 
-            <div class="alert alert-warning text-center">Some Post Are Being Review</div>
-          @endif
-      </div>
-    @endif
-  </div>
 
 </body>
 </html>
