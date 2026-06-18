@@ -11,7 +11,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        // Render (and most PaaS) sit behind a load balancer that terminates
+        // TLS and forwards requests over HTTP with X-Forwarded-* headers.
+        // Trusting the proxy lets Laravel detect HTTPS so generated URLs
+        // (asset(), url(), @vite) use the correct scheme.
+        $middleware->trustProxies(at: '*');
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
