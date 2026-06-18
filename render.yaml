@@ -1,0 +1,76 @@
+# =============================================================================
+# Render Blueprint for the FreedomWall Laravel application
+# Database is hosted externally on Clever Cloud (MySQL or PostgreSQL add-on).
+#
+# Docs: https://render.com/docs/blueprint-spec
+# =============================================================================
+services:
+  - type: web
+    name: freedomwall
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
+    envVars:
+      # ---- Application ------------------------------------------------------
+      - key: APP_NAME
+        value: FreedomWall
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      # Generate once with `php artisan key:generate --show` and paste here,
+      # or leave Render to keep it as a synced secret.
+      - key: APP_KEY
+        sync: false
+      # Set this to your Render service URL after the first deploy,
+      # e.g. https://freedomwall.onrender.com
+      - key: APP_URL
+        sync: false
+
+      - key: LOG_CHANNEL
+        value: stack
+      - key: LOG_LEVEL
+        value: error
+
+      # ---- Database (Clever Cloud add-on) ----------------------------------
+      # Use "mysql" or "pgsql" depending on your Clever Cloud add-on type.
+      #
+      # Map your Clever Cloud add-on variables to these DB_* values:
+      #   MySQL add-on                 PostgreSQL add-on            -> set here
+      #   MYSQL_ADDON_HOST             POSTGRESQL_ADDON_HOST        -> DB_HOST
+      #   MYSQL_ADDON_PORT (3306)      POSTGRESQL_ADDON_PORT (5432) -> DB_PORT
+      #   MYSQL_ADDON_DB               POSTGRESQL_ADDON_DB          -> DB_DATABASE
+      #   MYSQL_ADDON_USER             POSTGRESQL_ADDON_USER        -> DB_USERNAME
+      #   MYSQL_ADDON_PASSWORD         POSTGRESQL_ADDON_PASSWORD    -> DB_PASSWORD
+      # (For PostgreSQL, also set DB_CONNECTION=pgsql and DB_PORT=5432.)
+      - key: DB_CONNECTION
+        value: mysql
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        sync: false
+      - key: DB_DATABASE
+        sync: false
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+
+      # ---- Sessions / Cache / Queue (database-backed) ----------------------
+      - key: SESSION_DRIVER
+        value: database
+      - key: SESSION_SECURE_COOKIE
+        value: "true"
+      - key: CACHE_STORE
+        value: database
+      - key: QUEUE_CONNECTION
+        value: database
+
+      # ---- Mail (logs by default; configure a real mailer when ready) ------
+      - key: MAIL_MAILER
+        value: log
+
+      # ---- Filesystem -------------------------------------------------------
+      - key: FILESYSTEM_DISK
+        value: local
