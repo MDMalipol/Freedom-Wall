@@ -31,7 +31,7 @@ Route::get('/post', function () {
 Route::get('/Recycle', function () {
     $contents = Content::all();
     return view('Recycle', compact('contents'));
-})->name('Recycle');
+})->middleware(['auth', 'verified'])->name('Recycle');
 
 
 
