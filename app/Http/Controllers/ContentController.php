@@ -39,7 +39,7 @@ class ContentController extends Controller
     {
          $nullStatusCount = Content::whereNull('Status')->count();
         $contents = Content::all();
-        return view('wall', compact('contents','nullStatusCount'));
+        return view('Wall', compact('contents','nullStatusCount'));
     }
 
     public function accept(Request $request, $id)
